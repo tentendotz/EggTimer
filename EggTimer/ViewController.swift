@@ -6,20 +6,25 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+    var player: AVAudioPlayer!
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        
+        playSound()
     }
+    
 
+    func playSound() {
+        let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
 }
+
 
